@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "564939107681",
+    "project_id": "teenpattilive",
+    "storage_bucket": "teenpattilive.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564939107681:android:3e94a33b3082f899f5e920",
+        "android_client_info": {
+          "package_name": "com.EuropaInfoTech.TeenPattiLive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564939107681-ka1ui71gl75n5v75ibjesgie9k1m76d4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1l-WmyML-2fByBAZwaEcXk1BgaOtV8UI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564939107681-ka1ui71gl75n5v75ibjesgie9k1m76d4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
