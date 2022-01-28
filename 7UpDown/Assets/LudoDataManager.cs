@@ -97,31 +97,24 @@ public class LudoDataManager : MonoBehaviour
         int localPlayerColor = System.Array.IndexOf(colors, player_info[localPlayerIndex].GetField("color").ToString().Trim(new char[] { '"' }));
         Debug.Log("dfd");
 
+        if (localPlayerColor - localPlayerIndex >= 0)
+        {
+            localPlayerColor = localPlayerColor - localPlayerIndex;
+        }
+        else
+        {
+            localPlayerColor = localPlayerColor - localPlayerIndex + player_info.Count;
+        }
 
         for (int i = 0; i < player_info.Count; i++)
         {
 
-            Debug.Log("dfd");
-
-            int k = 0;
-            int l = 0;
-            if (i + localPlayerIndex > player_info.Count - 1)
+            playersData[i].color = colors[localPlayerColor];
+            localPlayerColor++;
+            if (localPlayerColor >= player_info.Count)
             {
-                k = player_info.Count - (i + localPlayerIndex);
+                localPlayerColor = 0;
             }
-            else
-            {
-                k = i + localPlayerIndex;
-            }
-            if (i + localPlayerColor > player_info.Count - 1)
-            {
-                l = player_info.Count - (i + localPlayerColor);
-            }
-            else
-            {
-                l = i + localPlayerColor;
-            }
-            playersData[k].color = colors[l];
         }
 
         Debug.Log("Seat Index . " );
