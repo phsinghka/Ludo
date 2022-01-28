@@ -234,7 +234,13 @@ public class TestSocketIO : MonoBehaviour
 
         }
 
-        if(en == "GET_BET_LISTS")
+        if(en == "LUDO_TABLE_LEAVE")
+        {
+            SceneManager.LoadScene(0);
+            NetworkManagerMain.Instance.errorText.text = msg;
+        }
+
+        if (en == "GET_BET_LISTS")
         {
             Debug.Log("GET_BET_LISTS");
 
@@ -266,6 +272,7 @@ public class TestSocketIO : MonoBehaviour
         }
         if (en == "LUDO_REJOIN_GAME")
         {
+            SceneManager.LoadScene("LudoGameScene");
             /*LUDO_DONE_MATCH_MECKING <== RESPONSE RECIEVED DATA ==> { "err":false,"msg":"","errcode":"0000","en":"LUDO_DONE_MATCH_MECKING","data":{ "max_seat":4,"player_info":[{ "seat_index":0,"user_info":{ "_id":"6193c332d50a776027b6c0a7","user_name":"ludo_15","profile_url":"image_avatar/avatar_2.png","chips":750,"sck_id":"-VWXLJvzS1eV8H0oAAAF"},"color":"blue","status":"play","is_robot":0,"dice_slot":[-1,-1,-1,-1],"dice_value":0,"new_game":4,"not_move_kukari_count":0,"play_dice_slot":[],"six_counter":0,"six_not_come_count":0,"turn_counter":0,"turn_miss":0,"win_dice_slot":[],"winner_index":0,"winner_status":"Loss"},{ "seat_index":1,"user_info":{ "_id":"618a8cc1bef3162cdf20a403","user_name":"ludo_13","profile_url":"image_avatar/avatar_3.png","chips":250,"sck_id":"5KTuYN6LT0HVNFIMAAAI"},"color":"blue","status":"play","is_robot":0,"dice_slot":[-1,-1,-1,-1],"dice_value":0,"new_game":4,"not_move_kukari_count":0,"play_dice_slot":[],"six_counter":0,"six_not_come_count":0,"turn_counter":0,"turn_miss":0,"win_dice_slot":[],"winner_index":0,"winner_status":"Loss"},{ "seat_index":2,"user_info":{ "_id":"618a8cc1bef3162cdf20a403","user_name":"ludo_13","profile_url":"image_avatar/avatar_3.png","chips":250,"sck_id":"5KTuYN6LT0HVNFIMAAAI"},"color":"blue","status":"play","is_robot":0,"dice_slot":[-1,-1,-1,-1],"dice_value":0,"new_game":4,"not_move_kukari_count":0,"play_dice_slot":[],"six_counter":0,"six_not_come_count":0,"turn_counter":0,"turn_miss":0,"win_dice_slot":[],"winner_index":0,"winner_status":"Loss"},{ "seat_index":3,"user_info":{ "_id":"618a8cc1bef3162cdf20a403","user_name":"ludo_13","profile_url":"image_avatar/avatar_3.png","chips":250,"sck_id":"5KTuYN6LT0HVNFIMAAAI"},"color":"blue","status":"play","is_robot":0,"dice_slot":[-1,-1,-1,-1],"dice_value":0,"new_game":4,"not_move_kukari_count":0,"play_dice_slot":[],"six_counter":0,"six_not_come_count":0,"turn_counter":0,"turn_miss":0,"win_dice_slot":[],"winner_index":0,"winner_status":"Loss"}],"game_id":"69"},"title":"Alert","sendTime":"2021-11-18T06:42:53.374Z"}*/
             LudoDataManager.Instance.SetPlayersData(data,"REJOIN");
 
@@ -545,5 +552,9 @@ public class TestSocketIO : MonoBehaviour
         eventSend.AddField("data", "");
 
         TestSocketIO.Instance.SendData("req", eventSend);
+    }
+    void OnApplicationFocus(bool focus)
+    {
+        if (focus && SceneManager.GetActiveScene().name == "LudoGameScene") RejoinEventSend();
     }
 }
